@@ -1,0 +1,15 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "extends": "airbnb-base",
+  "rules": {
+    "comma-dangle": ["error", "never"],
+    "no-plusplus": ["off"]
+  },
+  "globals": {
+    "beforeEach": true,
+    "describe": true,
+    "it": true
+  }
+}

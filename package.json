@@ -1,0 +1,25 @@
+{
+  "name": "quadrupedo",
+  "version": "1.0.0",
+  "description": "Prototipado rápido de un quadrupedo utilizando JavaScript y Johnny Five.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon .",
+    "flash": "interchange install --interactive"
+  },
+  "keywords": [],
+  "author": "Marcos Tomatti <markost@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "johnny-five": "^0.14.3",
+    "nodebots-interchange": "^1.1.6",
+    "nodemon": "^1.17.3"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-import-resolver-node": "^0.3.2",
+    "eslint-import-resolver-webpack": "^0.8.4",
+    "eslint-plugin-import": "^2.9.0"
+  }
+}
