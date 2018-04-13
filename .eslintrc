@@ -5,6 +5,7 @@
   "extends": "airbnb-base",
   "rules": {
     "comma-dangle": ["error", "never"],
+    "object-curly-newline": ["off"],
     "no-plusplus": ["off"]
   },
   "globals": {
