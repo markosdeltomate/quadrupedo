@@ -236,7 +236,10 @@ board.on('ready', () => {
     });
     quad.state = 'stand';
   };
-
+  /*  ------------------------------
+   *        Codigo Nuevo
+   *  ------------------------------
+   */
   quad.girar = function girar(dir) {
     const a = dir === 'left' ? 0 : 2;
     const b = dir === 'left' ? 2 : 0;
@@ -326,10 +329,13 @@ board.on('ready', () => {
           null,
           { degrees: angulos.atras.femur[b] }
         ]
-      ],
+      ]
     });
   };
-  
+  /*  ------------------------------
+   *        Fin Codigo Nuevo
+   *  ------------------------------
+   */
   quad.arriba = () => {
     quad.cadera.to(60);
     quad.femures.to(30);
