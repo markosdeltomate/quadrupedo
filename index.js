@@ -81,7 +81,7 @@ board.on('ready', () => {
 
     animacionPiernas.enqueue({
       duration: 1500,
-      cuePoints: [0, 0.25, 0.5, 0.625, 0.75, 0.875, 1.0],
+      cuePoints: [0, 0.25, 0.5, 0.625, 0.75, 0.875, 1.0], // 7 cuadros por animacion distribuidos
       loop: true,
       loopback: 0.5,
       fps: 100,
@@ -91,14 +91,14 @@ board.on('ready', () => {
       oncomplete: function oncomplete() {},
       keyFrames: [
         /* d1c, r1f */
-        [
-          null,
-          null,
-          { degrees: angulos.frente.cadera[a] },
-          { degrees: angulos.frente.cadera[1] },
-          { degrees: angulos.frente.cadera[b] },
-          null,
-          { degrees: angulos.frente.cadera[a] }
+        [                                         // primer motor
+          null,                                   // 1er cuadro: respeta la posicion actual del motor
+          null,                                   // 2do cuadro: ignora accion y prolonga la animacion hasta el siguiente frame
+          { degrees: angulos.frente.cadera[a] },  // 3er cuadro: rota el motor hasta la posicion indicada (fin o inicio)
+          { degrees: angulos.frente.cadera[1] },  // 4to cuadro: rota el motor hasta la posicion media
+          { degrees: angulos.frente.cadera[b] },  // 5to cuadro: rota el motor hasta la posicion indicada (fin o inicio)
+          null,                                   // 1er cuadro: ignora accion y prolonga la animacion hasta el siguiente frame
+          { degrees: angulos.frente.cadera[a] }   // 1er cuadro: rota el motor hasta la posicion indicada (fin o inicio)
         ],
         [
           null,
