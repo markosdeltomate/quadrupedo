@@ -6,7 +6,9 @@
   "rules": {
     "comma-dangle": ["error", "never"],
     "object-curly-newline": ["off"],
-    "no-plusplus": ["off"]
+    "no-plusplus": ["off"],
+    "no-multi-spaces": ["off"],
+    "max-len": ["off"]
   },
   "globals": {
     "beforeEach": true,
