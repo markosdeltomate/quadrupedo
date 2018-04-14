@@ -237,6 +237,99 @@ board.on('ready', () => {
     quad.state = 'stand';
   };
 
+  quad.girar = function girar(dir) {
+    const a = dir === 'left' ? 0 : 2;
+    const b = dir === 'left' ? 2 : 0;
+
+    animacionPiernas.enqueue({
+      duration: 1500,
+      fps: 100,
+      cuePoints: [0, 0.25, 0.5, 0.625, 0.75, 0.875, 1.0],
+      loop: true,
+      loopback: 0.5,
+      onstop: function onstop() {
+        quad.firme();
+      },
+      keyFrames: [
+        [
+          null,
+          null,
+          { degrees: angulos.frente.cadera[a] },
+          null,
+          { degrees: angulos.frente.cadera[b] },
+          null,
+          { degrees: angulos.frente.cadera[a] }
+        ],
+        [
+          null,
+          null,
+          { degrees: angulos.frente.femur[a] },
+          { step: altura, easing: easeOut },
+          { degrees: angulos.frente.femur[b] },
+          null,
+          { degrees: angulos.frente.femur[a] }
+        ],
+
+        [
+          null,
+          null,
+          { degrees: angulos.frente.cadera[a] },
+          null,
+          { degrees: angulos.frente.cadera[b] },
+          null,
+          { degrees: angulos.frente.cadera[a] }
+        ],
+        [
+          null,
+          { step: altura, easing: easeOut },
+          { degrees: angulos.frente.femur[a], easing: easeIn },
+          null,
+          { degrees: angulos.frente.femur[b], easing: easeIn },
+          { step: altura, easing: easeOut },
+          { degrees: angulos.frente.femur[a], easing: easeIn }
+        ],
+
+        [
+          null,
+          null,
+          { degrees: angulos.atras.cadera[b] },
+          null,
+          { degrees: angulos.atras.cadera[a] },
+          null,
+          { degrees: angulos.atras.cadera[b] }
+        ],
+        [
+          null,
+          { step: altura, easing: easeOut },
+          { degrees: angulos.atras.femur[b], easing: easeIn },
+          null,
+          { degrees: angulos.atras.femur[a], easing: easeIn },
+          { step: altura, easing: easeOut },
+          { degrees: angulos.atras.femur[b], easing: easeIn }
+        ],
+
+        [
+          null,
+          null,
+          { degrees: angulos.atras.cadera[b] },
+          null,
+          { degrees: angulos.atras.cadera[a] },
+          null,
+          { degrees: angulos.atras.cadera[b] }
+        ],
+        [
+          null,
+          null,
+          { degrees: angulos.atras.femur[b] },
+          { step: altura, easing: easeOut },
+          { degrees: angulos.atras.femur[a] },
+          null,
+          { degrees: angulos.atras.femur[b] }
+        ]
+      ],
+    });
+  };
+  
   quad.arriba = () => {
     quad.cadera.to(60);
     quad.femures.to(30);
