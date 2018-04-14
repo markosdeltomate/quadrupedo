@@ -6,23 +6,23 @@ board.on('ready', () => {
   const quad = {};
 
   // Definimos la pierna derecha adelante o 1, la cadera y el fémur.
-  quad.d1c = new five.Servo({ address: 0x40, controller: 'PCA9685', pin: 0, board });
-  quad.d1f = new five.Servo({ address: 0x40, controller: 'PCA9685', pin: 1, board, invert: true});
+  quad.d1c = new five.Servo({ address: 0x40, controller: 'PCA9685', pin: 0, invert: true });
+  quad.d1f = new five.Servo({ address: 0x40, controller: 'PCA9685', pin: 1, invert: true });
   quad.d1 = new five.Servos([quad.d1c, quad.d1f]);
 
   // Definimos la pierna izquierda adelante o 1, la cadera y el fémur.
-  quad.i1c = new five.Servo({ address: 0x40, controller: 'PCA9685', pin: 2, board, invert: true });
-  quad.i1f = new five.Servo({ address: 0x40, controller: 'PCA9685', pin: 3, board });
+  quad.i1c = new five.Servo({ address: 0x40, controller: 'PCA9685', pin: 2 });
+  quad.i1f = new five.Servo({ address: 0x40, controller: 'PCA9685', pin: 3 });
   quad.i1 = new five.Servos([quad.i1c, quad.i1f]);
 
   // Definimos la pierna derecha detras o 2, la cadera y el fémur.
-  quad.d2c = new five.Servo({ address: 0x40, controller: 'PCA9685', pin: 4, board, invert: true });
-  quad.d2f = new five.Servo({ address: 0x40, controller: 'PCA9685', pin: 5, board, invert: true });
+  quad.d2c = new five.Servo({ address: 0x40, controller: 'PCA9685', pin: 4 });
+  quad.d2f = new five.Servo({ address: 0x40, controller: 'PCA9685', pin: 5, invert: true });
   quad.d2 = new five.Servos([quad.d2c, quad.d2f]);
 
   // Definimos la pierna izquierda detras o 2, la cadera y el fémur.
-  quad.i2c = new five.Servo({ address: 0x40, controller: 'PCA9685', pin: 6, board });
-  quad.i2f = new five.Servo({ address: 0x40, controller: 'PCA9685', pin: 7, board });
+  quad.i2c = new five.Servo({ address: 0x40, controller: 'PCA9685', pin: 6, invert: true });
+  quad.i2f = new five.Servo({ address: 0x40, controller: 'PCA9685', pin: 7 });
   quad.i2 = new five.Servos([quad.i2c, quad.i2f]);
 
   quad.cadera = new five.Servos([quad.d1c, quad.i1c, quad.d2c, quad.i2c]);
