@@ -1,10 +1,10 @@
 const five = require('johnny-five');
 const EtherPort = require('etherport');
+
 const board = new five.Board({ port: new EtherPort(3030), timeout: 30000 });
 
 board.on('ready', () => {
   const quad = {};
-
   // Definimos la pierna derecha adelante o 1, la cadera y el fémur.
   quad.d1c = new five.Servo({ address: 0x40, controller: 'PCA9685', pin: 0, invert: true });
   quad.d1f = new five.Servo({ address: 0x40, controller: 'PCA9685', pin: 1, invert: true });
