@@ -6,20 +6,6 @@ board.on('ready', () => {
   const quad = {
     status: 'sleep'
   };
-  const centro = 90;
-  const zancada = 1;
-  const angulos = {
-    frente: {
-      cadera: [(centro - 30) * zancada, centro, (centro + 30) * zancada],
-      femur: [30, 0, 50]
-    },
-    atras: {
-      cadera: [(centro + 30) * zancada, centro, (centro - 30) * zancada],
-      femur: [50, 0, 30]
-    }
-  };
-  const easeIn = 'inQuad';
-  const easeOut = 'outQuad';
 
   // Definimos la pierna derecha adelante o 1, la cadera y el fémur.
   quad.d1c = new five.Servo({ address: 0x40, controller: 'PCA9685', pin: 0, invert: true });
@@ -58,22 +44,22 @@ board.on('ready', () => {
     animacionFemures.enqueue({
       duration: 1000,
       fps: 100,
-      cuePoints: [0, 0.5, 1.0],
+      cuePoints: [0, 0.5, 1.0], // 3 cuadros por animacion
       loop: false,
       oncomplete: function onstop() {
         quad.stop();
       },
       keyFrames: [
-        [{ degrees: 0 }, { degrees: 45 }, { degrees: 180 }],
-        [{ degrees: 0 }, { degrees: 45 }, { degrees: 180 }],
-        [{ degrees: 0 }, { degrees: 45 }, { degrees: 180 }],
-        [{ degrees: 0 }, { degrees: 45 }, { degrees: 180 }]
+        [{ degrees: 0 }, { degrees: 45 }, { degrees: 180 }], // 1er motor
+        [{ degrees: 0 }, { degrees: 45 }, { degrees: 180 }], // 2do motor
+        [{ degrees: 0 }, { degrees: 45 }, { degrees: 180 }], // 3er motor
+        [{ degrees: 0 }, { degrees: 45 }, { degrees: 180 }] // 4to motor
       ]
     });
   };
 
   quad.stand = () => {
-    quad.cadera.to(60);
+    quad.cadera.to(60); // movemos los motores por grupos sin animacion
     quad.femures.to(30);
   };
 
